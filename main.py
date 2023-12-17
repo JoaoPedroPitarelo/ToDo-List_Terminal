@@ -18,7 +18,7 @@ def main():  # Função main
     if not lista_tarefas:  # Menu de tarefas
         print("\n Não há nada para fazer :)")
     else:
-        print("_" * 17)
+        print("_" * 17, "\n")
         for i, tarefa in enumerate(lista_tarefas):
             print("  FEITA     |" if tarefa[2] == 1 else "  NÃO FEITA |", "ID: ", tarefa[0], "| Data: ", tarefa[3],
                   "| Tarefa: ", tarefa[1])
