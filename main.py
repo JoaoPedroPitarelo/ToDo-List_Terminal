@@ -2,8 +2,19 @@
 import sqlite3
 import os
 
+
 conn = sqlite3.connect("database.db")  # conexão com banco de dados
 cursor = conn.cursor()
+
+RESET = '\033[0m'   # Cores
+RED = '\033[31m'
+GREEN = '\033[32m'
+YELLOW = '\033[33m'
+BLUE= '\033[34m'
+MAGENTA = '\033[35m'
+CYAN = '\033[36m'
+WHITE = '\033[37m'
+NEGRITO = '\033[1m'
 
 
 def main():  # Função main
@@ -11,12 +22,23 @@ def main():  # Função main
     """Coleta dos dados do DB e retorna uma lista de tarefas"""
     cursor.execute("SELECT * FROM TBTAREFA")  # Coletar dados do BD
     lista_tarefas = cursor.fetchall()  # Captura dos dados
-    print(" ")
 
-    print('Lista de Tarefas: ')
+    print(NEGRITO, " ")  # Logo
+    print(
+        "                      ",                   GREEN + "_____                   _             _ \n" +
+                WHITE + "     /////|           " + GREEN + "|_   _|__ _ __ _ __ ___ (_)_ __   __ _| |\n" +
+                WHITE + "    ///// |    (\       " + GREEN + "| |/ _ \ '__| '_ ` _ \| | '_ \ / _` | |\n" +
+                WHITE + "   |~~~|  |    \ \      " + GREEN + "| |  __/ |  | | | | | | | | | | (_| | |\n" +
+                WHITE + "   |===|  |     \ \     " + GREEN + "|_|\___|_|  |_| |_| |_|_|_| |_|\__,_|_|\n" +
+                WHITE + "   |T  |  |     / '|   " + MAGENTA + "         _____     ____   ___  _     ___    _____\n" +
+                WHITE + "   | D |  |     \ '/  " + MAGENTA+  "         |_   _|__ |  _ \ / _ \| |   |_ _|__|_   _|\n" +
+                WHITE + "   |  L| /        \      " + MAGENTA + "        | |/ _ \| | | | | | | |    | |/ __|| |  \n" +
+                WHITE + "   |===|/         ==).   " + MAGENTA + "        | | (_) | |_| | |_| | |___ | |\__ \| | \n" +
+                WHITE + "   '---'         (__)   " + MAGENTA + "         |_|\___/|____/ \___/|_____|___|___/|_| \n" + RESET
+    )
 
     if not lista_tarefas:  # Menu de tarefas
-        print("\n Não há nada para fazer :)")
+        print(NEGRITO + GREEN + "\n Não há nada para fazer :)" + RESET)
     else:
         print("_" * 17, "\n")
         for i, tarefa in enumerate(lista_tarefas):
@@ -78,7 +100,6 @@ def adicionar_tarefa():  # Adicionar nova tarefa à lista
                 break
             else:
                 print("\n Data INVALIDA")
-
         except ValueError:
             print("\n Data INVALIDA")
 
@@ -141,10 +162,8 @@ def alt_feita():  # Mudar para feita a tarefa
                 break
             else:
                 print("\n Índice não encontrado")
-                entrada_indice = input("\n Índice: ").strip()
         except ValueError:
             print("\n Índice INVALIDO >(")
-            entrada_indice = input("\n Índice: ").strip()
 
 
 def alt_nao_feita():  # Mudar para não feita a tarefa
@@ -170,10 +189,8 @@ def alt_nao_feita():  # Mudar para não feita a tarefa
                 break
             else:
                 print("\n Índice não encontrado")
-                entrada_indice = input("\n Índice: ").strip()
         except ValueError:
             print("\n Índice INVALIDO >(")
-            entrada_indice = input("\n Índice: ").strip()
 
 
 def clear_terminal():  # Função para limpar o terminal
