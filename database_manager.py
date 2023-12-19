@@ -34,11 +34,6 @@ class GerenciadorBD:
         self.cursor.execute("UPDATE TBTAREFA SET feita = ? WHERE id_tarefa = ?", (0, id_indice))
         self.conn.commit()
 
-    def obsevacoes(self, task_id):
+    def descricoes(self, task_id):
         self.cursor.execute("SELECT nota FROM TBTAREFA WHERE id_tarefa = ?", (task_id,))
-        text_obsevacoes = self.cursor.fetchall()
-
-        if not text_obsevacoes[0][0].strip():
-            return None
-        else:
-            return text_obsevacoes[0][0]
+        return self.cursor.fetchall()
