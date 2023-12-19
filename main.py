@@ -182,11 +182,13 @@ def alt_nao_feita():  # Mudar para não feita a tarefa
 
 
 def acessar_observacoes(): # Observações
-    if db_manager.obsevacoes(validacao_indice()) is None:
+    indice_validacao = validacao_indice()
+
+    if db_manager.obsevacoes(indice_validacao) is None:
         print(RED, NEGRITO, "\nNão há observação para essa tarefa!", RESET)
         pause = input("\nPressione ENTER para continuar")
     else:
-        print(f'\n {NEGRITO}   " {db_manager.obsevacoes(validacao_indice())} "{RESET}')
+        print(f'\n {NEGRITO}   " {db_manager.obsevacoes(indice_validacao)} "{RESET}')
         pause = input("\nPressione ENTER para continuar")
 
 
