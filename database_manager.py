@@ -13,9 +13,9 @@ class GerenciadorBD:
         self.cursor.execute("SELECT * FROM TBTAREFA")
         return self.cursor.fetchall()
 
-    def adicionar_tarefa(self, tarefa, data, obs):
-        self.cursor.execute("INSERT INTO TBTAREFA (tarefa, feita, data, nota) VALUES (?, 0, ?, ?)",
-                            (tarefa, data, obs))
+    def adicionar_tarefa(self, tarefa, data, obs, prioridade):
+        self.cursor.execute("INSERT INTO TBTAREFA (tarefa, feita, data, nota, prioridade) VALUES (?, 0, ?, ?, ?)",
+                            (tarefa, data, obs, prioridade))
         self.conn.commit()
 
     def indices(self):

@@ -14,6 +14,9 @@ BLUE= '\033[34m'
 MAGENTA = '\033[35m'
 CYAN = '\033[36m'
 WHITE = '\033[37m'
+BG_GREEN = "\033[42m"
+BG_YELLOW = "\033[43m"
+BG_RED = "\033[41m"
 NEGRITO = '\033[1m'
 CLARO = '\033[90m'
 
@@ -48,12 +51,36 @@ def exibir_tarefas():
     else:
         print('Suas tarefas...')
         print("_" * 24, "\n")
+        
         for i, tarefa in enumerate(lista_tarefas):
-            print(GREEN + NEGRITO + " \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + " \u2718 " + RESET,
-                  NEGRITO, "|",
-                  "ID: ", tarefa[0],
-                  "| Data: ", tarefa[3],
-                  "| Tarefa: ", tarefa[1], RESET)
+            
+            if tarefa[5] == 2:
+                prioridade = "🔴"
+                
+                print(GREEN + NEGRITO + " \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + " \u2718 " + RESET,
+                NEGRITO, "|",
+                f"ID: {tarefa[0]}",
+                f"| Data: {tarefa[3]}",
+                f"| Prioridade: {prioridade}{RESET} | Tarefa:  {tarefa[1]}{RESET}")
+                
+            elif tarefa[5] == 1:
+                prioridade = "🟡"
+                
+                print(GREEN + NEGRITO + " \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + " \u2718 " + RESET,
+                NEGRITO, "|",
+                f"ID: {tarefa[0]}",
+                f"| Data: {tarefa[3]}",
+                f"| Prioridade: {prioridade}{RESET} | Tarefa:  {tarefa[1]}{RESET}")
+                
+            else:
+                prioridade = "🟢"
+                
+                print(GREEN + NEGRITO + " \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + " \u2718 " + RESET,
+                NEGRITO, "|",
+                f"ID: {tarefa[0]}",
+                f"| Data: {tarefa[3]}",
+                f"| Prioridade: {prioridade}{RESET} | Tarefa:  {tarefa[1]}{RESET}")
+            
         print("_" * 24, "\n")
 
 
@@ -131,9 +158,23 @@ def validacao_data():
 def adicionar_tarefa():
     print(CLARO, '\n "Faça em breves palavras Ex: Tomar café"', RESET)
     nova_tarefa = input("   Nome Tarefa: ")
-
     entrada_obsevacao = input("      Desc da tarefa: ")
+    
+    while True:
+        print(CLARO, "\n         [0-Baixa] [1-Média] [2-Alta]", RESET)
+        prioridade_tarefa = input("         Qual a prioridade da tarefa?: ").strip()
+    
+        try:
+            prioridade_tarefa = int(prioridade_tarefa)
+            
+            if prioridade_tarefa in [0, 1, 2]:
+                break
+            else:
+                print(RED, NEGRITO, "\n Digite entre 0 - 2!")
+        except ValueError:
+            print(RED, NEGRITO,  "\n Entrada inválida ", RESET)
 
+    
     data_validada = validacao_data()
 
     if data_validada[0] in range(0, 9) and data_validada[1] in range(0, 9):
@@ -145,7 +186,7 @@ def adicionar_tarefa():
     else:
         data_formatada = f"{data_validada[0]}/{data_validada[1]}/{data_validada[2]}"
 
-    db_manager.adicionar_tarefa(nova_tarefa, data_formatada, entrada_obsevacao)
+    db_manager.adicionar_tarefa(nova_tarefa, data_formatada, entrada_obsevacao, prioridade_tarefa)
 
 
 #  Validação dos índices
@@ -174,6 +215,7 @@ def validacao_indice():
             print(RED, NEGRITO,  "\n Índice INVALIDO ", RESET)
 
     return entrada_indice
+
 
 
 def remover_tarefa():  # Remover tarefa
