@@ -10,7 +10,7 @@ class GerenciadorBD:
         self.conn.close()
 
     def tarefas(self):
-        self.cursor.execute("SELECT * FROM TBTAREFA")
+        self.cursor.execute("SELECT * FROM TBTAREFA ORDER BY PRIORIDADE DESC")
         return self.cursor.fetchall()
 
     def adicionar_tarefa(self, tarefa, data, obs, prioridade):

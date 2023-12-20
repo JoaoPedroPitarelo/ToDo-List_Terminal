@@ -57,29 +57,29 @@ def exibir_tarefas():
             if tarefa[5] == 2:
                 prioridade = "🔴"
                 
-                print(GREEN + NEGRITO + " \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + " \u2718 " + RESET,
+                print(GREEN + NEGRITO + "  \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  \u2718 " + RESET,
                 NEGRITO, "|",
                 f"ID: {tarefa[0]}",
                 f"| Data: {tarefa[3]}",
-                f"| Prioridade: {prioridade}{RESET} | Tarefa:  {tarefa[1]}{RESET}")
+                f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{RESET}")
                 
             elif tarefa[5] == 1:
                 prioridade = "🟡"
                 
-                print(GREEN + NEGRITO + " \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + " \u2718 " + RESET,
+                print(GREEN + NEGRITO + "  \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  \u2718 " + RESET,
                 NEGRITO, "|",
                 f"ID: {tarefa[0]}",
                 f"| Data: {tarefa[3]}",
-                f"| Prioridade: {prioridade}{RESET} | Tarefa:  {tarefa[1]}{RESET}")
+                f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{RESET}")
                 
             else:
                 prioridade = "🟢"
                 
-                print(GREEN + NEGRITO + " \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + " \u2718 " + RESET,
+                print(GREEN + NEGRITO + "  \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  \u2718 " + RESET,
                 NEGRITO, "|",
                 f"ID: {tarefa[0]}",
                 f"| Data: {tarefa[3]}",
-                f"| Prioridade: {prioridade}{RESET} | Tarefa:  {tarefa[1]}{RESET}")
+                f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{RESET}")
             
         print("_" * 24, "\n")
 
@@ -161,7 +161,7 @@ def adicionar_tarefa():
     entrada_obsevacao = input("      Desc da tarefa: ")
     
     while True:
-        print(CLARO, "\n         [0-Baixa] [1-Média] [2-Alta]", RESET)
+        print(CLARO, "\n         [0-Baixa 🟢] [1-Média 🟡] [2-Alta 🔴]", RESET)
         prioridade_tarefa = input("         Qual a prioridade da tarefa?: ").strip()
     
         try:
