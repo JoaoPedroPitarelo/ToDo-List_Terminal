@@ -89,37 +89,37 @@ def exibir_tarefas():
         print("_" * 24, "\n")
 
 
-#  Função para a entrada do usuário nas opções do algoritmo
+#  Função para a entrada do usuário nas opções
 def entrada_opcao():
     print("\nOPÇÕES: ")
     print("     [A]dicionar Tarefa  [N]ão Feita  [D]esc tarefas\n"  # Opções de entrada do Usuário
           "     [R]emover Tarefa    [F]eita      [S]air")
 
     while True:  # Cria um loop que certifica que o usuário não irá passar se não digitar uma das opções válidas
-        entrada_opcao = input('\n Escolha: ').upper().strip()
+        entrada_usuario = input('\n Escolha: ').upper().strip()
 
-        if entrada_opcao.isalpha() and entrada_opcao.upper() in ["A", "R", "F", "N", "D", "S"]:
+        if entrada_usuario.isalpha() and entrada_usuario.upper() in ["A", "R", "F", "N", "D", "S"]:
             break
         else:
             print(RED, NEGRITO, "\n Entrada INVALIDA >(", RESET)
 
-    if entrada_opcao == "A":  # "Switch case" da entrada
+    if entrada_usuario == "A":  # "Switch case" da entrada
         adicionar_tarefa()
         clear_terminal()
-    elif entrada_opcao == "R":
+    elif entrada_usuario == "R":
         remover_tarefa()
         clear_terminal()
-    elif entrada_opcao == "N":
+    elif entrada_usuario == "N":
         alt_nao_feita()
         clear_terminal()
-    elif entrada_opcao == "F":
+    elif entrada_usuario == "F":
         alt_feita()
         clear_terminal()
-    elif entrada_opcao == "D":
+    elif entrada_usuario == "D":
         acessar_descricoes()
         clear_terminal()
-    elif entrada_opcao == "S":
-        return entrada_opcao
+    elif entrada_usuario == "S":
+        return entrada_usuario
 
 
 #   Função Principal(main)
