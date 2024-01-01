@@ -66,7 +66,7 @@ void logo() {
 
 //  Função para a entrada do usuário nas opções
 void entrada_opcoes() { 
-    cout << "\nOPÇÕES:  \n";
+    cout << "\nOPÇÕESes:  \n";
     cout << "     [A]dicionar Tarefa  [N]ão Feita  [D]esc tarefas\n"
             "     [R]emover Tarefa    [F]eita      [S]air"; 
 
