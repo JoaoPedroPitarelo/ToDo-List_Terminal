@@ -1,4 +1,4 @@
-"""" Algoritmo de Lista To Do """
+"""" ToDo-List Terminal """
 
 from database_manager import GerenciadorBD #  Importando de 'database_manager.py' a classe gerenciadora do BD  
 import os
@@ -98,10 +98,10 @@ def entrada_opcao():
     while True:  # Cria um loop que certifica que o usuário não irá passar se não digitar uma das opções válidas
         entrada_usuario = input('\n Escolha: ').upper().strip()
 
-        if entrada_usuario.isalpha() and entrada_usuario.upper() in ["A", "R", "F", "N", "D", "S"]:
+        if isinstance(entrada_usuario, str) and entrada_usuario in ["A", "R", "F", "N", "D", "S"]:
             break
         else:
-            print(RED, NEGRITO, "\n Entrada INVALIDA >(", RESET)
+            print(RED, NEGRITO, "\n Entrada INVALIDA", RESET)
 
     if entrada_usuario == "A":  # "Switch case" da entrada
         adicionar_tarefa()
@@ -130,6 +130,7 @@ def main():  # Função main
         exibir_tarefas()
 
         if entrada_opcao() == "S":
+            print("  Saindo...")
             break
 
 

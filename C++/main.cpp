@@ -1,7 +1,6 @@
 #include <iostream>
-#include <sqlite3.h>
-#include <locale.h>
-#include <ctype.h>
+#include <clocale>
+#include <cctype>
 #include <array>
 using namespace std;
 
