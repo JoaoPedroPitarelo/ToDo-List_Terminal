@@ -5,7 +5,7 @@
 <h3> Passos para executar: </h3>
 <ul>1. Dê um Git clone na pasta de sua prefêrencia</ul>
 <ul>2. Descompacte o ToDo-List_Terminal.rar</ul>
-<ul>3. Execute o ToDo-Lis_Terminal.exe</ul>
+<ul>3. Execute o ToDo-List_Terminal.exe</ul>
 
                         _____                   _             _
        /////|          |_   _|__ _ __ _ __ ___ (_)_ __   __ _| |
