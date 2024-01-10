@@ -3,9 +3,10 @@
 <h3> Lista de tarefas feita na linguagem Python para terminais</h3>
 
 <h3> Passos para executar: </h3>
-<ul>1. Dê um Git clone na pasta de sua prefêrencia</ul>
-<ul>2. Descompacte o ToDo-List_Terminal.rar</ul>
-<ul>3. Execute o ToDo-List_Terminal.exe</ul>
+<ul>1. Tenha o interpretador Python instalado em sua máquina. Caso não tenha entre em Python.org Tome cuidado para marcar a caixa "Adicionar ao .path" </ul>
+<ul>2. Faça um Git clone na pasta de sua prefêrencia</ul>
+<ul>3. Pelo terminal entre na pasta em que foi clonada os arquivos Ex: cd Documents/ </ul>
+<ul>4. Digite o comando 'python main.py' (no Windows) | 'python3 main.py' (no Linux) </ul>
 
                         _____                   _             _
        /////|          |_   _|__ _ __ _ __ ___ (_)_ __   __ _| |
