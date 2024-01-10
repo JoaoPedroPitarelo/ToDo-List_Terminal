@@ -6,6 +6,7 @@
 <ul>1. Abaixe o ToDo-list_Terminal.rar</ul>
 <ul>2. Extraia os arquivos dentro de uma pasta de sua preferência</ul>
 <ul>3. E execute o ToDo-List_terminal.exe</ul>
+
                         _____                   _             _
        /////|          |_   _|__ _ __ _ __ ___ (_)_ __   __ _| |
      ///// |    (\       | |/ _ \ '__| '_ ` _ \| | '_ \ / _` | |
