@@ -60,31 +60,31 @@ def exibir_tarefas():
         for i, tarefa in enumerate(lista_tarefas):
             
             if tarefa[5] == 2:
-                prioridade = "🔴"
+                prioridade = f"{RED}***"
                 
                 print(GREEN + NEGRITO + "  \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  \u2718 " + RESET,
                 NEGRITO, "|",
                 f"ID: {tarefa[0]}",
                 f"| Data: {tarefa[3]}",
-                f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{RESET}")
+                f"| Prioridade: {prioridade}{NEGRITO}{WHITE} | Tarefa:  {tarefa[1]}{RESET}")
                 
             elif tarefa[5] == 1:
-                prioridade = "🟡"
+                prioridade = f"{YELLOW}***"
                 
                 print(GREEN + NEGRITO + "  \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  \u2718 " + RESET,
                 NEGRITO, "|",
                 f"ID: {tarefa[0]}",
                 f"| Data: {tarefa[3]}",
-                f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{RESET}")
+                f"| Prioridade: {prioridade}{NEGRITO}{WHITE} | Tarefa:  {tarefa[1]}{RESET}")
                 
             else:
-                prioridade = "🟢"
+                prioridade = f"{GREEN}***"
                 
                 print(GREEN + NEGRITO + "  \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  \u2718 " + RESET,
                 NEGRITO, "|",
                 f"ID: {tarefa[0]}",
                 f"| Data: {tarefa[3]}",
-                f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{RESET}")
+                f"| Prioridade: {prioridade}{NEGRITO}{WHITE} | Tarefa:  {tarefa[1]}{RESET}")
             
         print("_" * 24, "\n")
 
@@ -169,7 +169,7 @@ def adicionar_tarefa():
     entrada_obsevacao = input("      Desc da tarefa: ")
     
     while True:
-        print(CLARO, "\n         [0-Baixa 🟢] [1-Média 🟡] [2-Alta 🔴]", RESET)
+        print(f"\n         [0-Baixa {GREEN}***{RESET}] [1-Média {YELLOW}***{RESET}] [2-Alta {RED}***{RESET}]", RESET)
         prioridade_tarefa = input("         Qual a prioridade da tarefa?: ").strip()
     
         try:
