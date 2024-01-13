@@ -1,6 +1,7 @@
 """" ToDo-List Terminal """
 
 from database_manager import GerenciadorBD #  Importando de 'database_manager.py' a classe gerenciadora do BD  
+import time
 import os
 
 # Conexão com o gerenciador do BD
@@ -93,12 +94,13 @@ def exibir_tarefas():
 def entrada_opcao():
     print("\nOPÇÕES: ")
     print("     [A]dicionar Tarefa  [N]ão Feita  [D]esc tarefas\n"  # Opções de entrada do Usuário
-          "     [R]emover Tarefa    [F]eita      [S]air")
+          "     [R]emover Tarefa    [F]eita      [S]air\n"
+          "     [-R]efresh                                       ")
 
     while True:  # Cria um loop que certifica que o usuário não irá passar se não digitar uma das opções válidas
         entrada_usuario = input('\n Escolha: ').upper().strip()
 
-        if isinstance(entrada_usuario, str) and entrada_usuario in ["A", "R", "F", "N", "D", "S"]:
+        if entrada_usuario in ["A", "R", "F", "N", "D", "S", "-R"]:
             break
         else:
             print(RED, NEGRITO, "\n Entrada INVALIDA", RESET)
@@ -118,6 +120,8 @@ def entrada_opcao():
     elif entrada_usuario == "D":
         acessar_descricoes()
         clear_terminal()
+    elif entrada_usuario == "-R":
+        refresh()
     elif entrada_usuario == "S":
         return entrada_usuario
 
@@ -135,6 +139,16 @@ def main():  # Função main
 
 
 #  Funções das opções do algoritmo (adicionar, remover, marcar como feita, sair...)
+
+
+def refresh():
+    palavra = 'refresh'
+    for loop in range(0,3):
+        palavra = palavra + '.'
+        print(palavra)
+        time.sleep(0.2)
+    time.sleep(1)
+
 
 #  Validação de data
 def validacao_data():
