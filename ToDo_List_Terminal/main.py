@@ -1,12 +1,13 @@
 """" ToDo-List Terminal """
 
-from database_manager import GerenciadorBD #  Importando de 'database_manager.py' a classe gerenciadora do BD  
+#  Importando de 'database_manager.py' a classe gerenciadora do BD  
+from database_manager import GerenciadorBD 
 import os
 
 # Conexão com o gerenciador do BD
 db_manager = GerenciadorBD()
 
-#  Constantes da cores de acordo com os escapes ANSII
+#  Constantes das cores deacordo com os escapes ANSII
 RESET = '\033[0m'
 RED = '\033[31m'
 GREEN = '\033[32m'
@@ -54,8 +55,8 @@ def exibir_tarefas():
     if not lista_tarefas:
         print(NEGRITO + GREEN + "\n Não há nada para fazer :)" + RESET)
     else:
-        print('Suas tarefas...')
-        print("_" * 24, "\n")
+        print('Suas tarefas: ')
+        print("_" * 3, "Geral", "_" * 16)
         
         for i, tarefa in enumerate(lista_tarefas):
             
