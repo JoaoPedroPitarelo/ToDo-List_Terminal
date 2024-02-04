@@ -1,8 +1,4 @@
-""" Foi de bom ânimo a criação de outro arquivo para o banco de dados. 
-    Para que dessa maneira fique mais organizado e encapsulado os métodos do BD """
-    
-import sqlite3  #  Banco de dados nativo do Python. Dessa forma não precisando que o usuário
-                #  abaixe qualquer biblioteca python
+import sqlite3
 
 
 #  Classe gerenciadora de Banco de dados.
@@ -18,13 +14,13 @@ class GerenciadorBD:
 
     #  Retornar todos os campos da tabela TBTAREFA ordenados pelo campo PRIORIDADE
     def tarefas(self):
-        self.cursor.execute("SELECT * FROM TBTAREFA ORDER BY PRIORIDADE DESC")
+        self.cursor.execute("SELECT * FROM TBTAREFA ORDER BY id_tarefa")
         return self.cursor.fetchall()
 
     #  Adição de uma nova linha à TBTAREFA
-    def adicionar_tarefa(self, tarefa, data, obs, prioridade):
-        self.cursor.execute("INSERT INTO TBTAREFA (tarefa, feita, data, nota, prioridade) VALUES (?, 0, ?, ?, ?)",
-                            (tarefa, data, obs, prioridade))
+    def adicionar_tarefa(self, tarefa, data, obs, prioridade, categoria):
+        self.cursor.execute("INSERT INTO TBTAREFA (tarefa, estado, data, descricao, prioridade, categoria) VALUES (?, 0, ?, ?, ?, ?)",
+                            (tarefa, data, obs, prioridade, categoria))
         self.conn.commit()
 
     #  Retornar somente os índices da TBTAREFA
@@ -39,15 +35,27 @@ class GerenciadorBD:
 
     #  Alterar a linha 'feita' para 1 quando o usuário completar a tarefa e selecionar dentre as opções '[F]eita'
     def alt_feita(self, id_indice):
-        self.cursor.execute("UPDATE TBTAREFA SET feita = ? WHERE id_tarefa = ?", (1, id_indice))
+        self.cursor.execute("UPDATE TBTAREFA SET estado = ? WHERE id_tarefa = ?", (1, id_indice))
         self.conn.commit()
 
     #  Alterar a linha 'feita' para 0 quando o usuário completar a tareafa e selcionar dentre as opções '[N]ão Feita' 
     def alt_nao_feita(self, id_indice):
-        self.cursor.execute("UPDATE TBTAREFA SET feita = ? WHERE id_tarefa = ?", (0, id_indice))
+        self.cursor.execute("UPDATE TBTAREFA SET estado = ? WHERE id_tarefa = ?", (0, id_indice))
         self.conn.commit()
 
     #  Retorna o campo descrições da TBTAREFA
     def descricoes(self, task_id):
-        self.cursor.execute("SELECT nota FROM TBTAREFA WHERE id_tarefa = ?", (task_id,))
+        self.cursor.execute("SELECT descricao FROM TBTAREFA WHERE id_tarefa = ?", (task_id,))
         return self.cursor.fetchall()
+
+    def lista_categorias(self):
+        self.cursor.execute("SELECT categoria_nome FROM tbcategoria")
+        return self.cursor.fetchall()
+
+    def criar_categoria(self, nome_categoria):
+        self.cursor.execute("INSERT INTO tbcategoria (categoria_nome) VALUES (?)", (nome_categoria,))
+        self.conn.commit()
+
+    def excluir_categoria(self, nome_categoria):
+        self.cursor.execute("DELETE FROM tbcategoria WHERE categoria_nome = ?", (nome_categoria,))
+        self.conn.commit()
