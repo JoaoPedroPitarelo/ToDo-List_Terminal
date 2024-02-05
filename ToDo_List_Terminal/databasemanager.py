@@ -58,4 +58,9 @@ class GerenciadorBD:
 
     def excluir_categoria(self, nome_categoria):
         self.cursor.execute("DELETE FROM tbcategoria WHERE categoria_nome = ?", (nome_categoria,))
+
+        for tarefa in self.tarefas():
+            if tarefa[6] == nome_categoria:
+                self.remover_tarefa(tarefa[0])
+
         self.conn.commit()

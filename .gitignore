@@ -2,3 +2,4 @@
 .idea
 venv
 .gitignore
+/ToDo_List_Terminal/SQL

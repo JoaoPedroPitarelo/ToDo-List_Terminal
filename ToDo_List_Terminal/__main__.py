@@ -7,11 +7,9 @@ from colors import *
 import time
 import os
 
-# Conexão com o gerenciador do BD
 db_manager = GerenciadorBD()
 
 
-#  Função para limpar o terminar
 def clear_terminal():
     if os.name == 'nt':  # Windows
         os.system('cls')
@@ -19,24 +17,6 @@ def clear_terminal():
         os.system('clear')  # Sistemas Linux
 
 
-#  Funções da parte "Home" do algoritmo
-
-#  Função que exibe o 'logo' do algoritmo. Essa função é para organização do código
-def logo():
-    print(NEGRITO, "                     ", GREEN + "_____                   _             _ \n" +
-          WHITE + "     /////|           " + GREEN + "|_   _|__ _ __ _ __ ___ (_)_ __   __ _| |\n" +
-          WHITE + "    ///// |    (\       " + GREEN + "| |/ _ \ '__| '_ ` _ \| | '_ \ / _` | |\n" +
-          WHITE + "   |~~~|  |    \ \      " + GREEN + "| |  __/ |  | | | | | | | | | | (_| | |\n" +
-          WHITE + "   |===|  |     \ \     " + GREEN + "|_|\___|_|  |_| |_| |_|_|_| |_|\__,_|_|\n" +
-          WHITE + "   |T  |  |     / '|   " + MAGENTA + "         _____     ____   ___  _     ___    _____\n" +
-          WHITE + "   | D |  |     \ '/  " + MAGENTA + "         |_   _|__ |  _ \ / _ \| |   |_ _|__|_   _|\n" +
-          WHITE + "   |  L| /        \      " + MAGENTA + "        | |/ _ \| | | | | | | |    | |/ __|| |  \n" +
-          WHITE + "   |===|/         ==).   " + MAGENTA + "        | | (_) | |_| | |_| | |___ | |\__ \| | \n" +
-          WHITE + "   '---'         (__)   " + MAGENTA + "         |_|\___/|____/ \___/|_____|___|___/|_| \n" + RESET
-          )
-
-
-#  Fução que exibe a lista de tarefas
 def exibir_tarefas():
 
     if not db_manager.tarefas():
@@ -44,69 +24,66 @@ def exibir_tarefas():
     else:
         print('Suas tarefas: ')
 
-        print("_" * 3, "Geral", "_" * 16)
+        print("_" * 2, "Geral", "_" * 19)
         for tarefa in db_manager.tarefas():
 
             if tarefa[6] == 'Geral':
 
-                if tarefa[5] == 2:
-                    prioridade = "🔴"
+                if tarefa[5] == 3:
+                    prioridade = f"{RED}alta{RESET} "
 
-                    print(GREEN + NEGRITO + "  \u2713 " + RESET if tarefa[
-                                                                       2] == 1 else RED + NEGRITO + "  \u2718 " + RESET,
+                    print(GREEN + NEGRITO + "  Feita   " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  N Feita " + RESET,
                           NEGRITO, "|",
                           f"ID: {tarefa[0]}",
                           f"| Data: {tarefa[3]}",
                           f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{RESET}")
 
-                elif tarefa[5] == 1:
-                    prioridade = "🟡"
+                elif tarefa[5] == 2:
+                    prioridade = f"{YELLOW}média{RESET}"
 
-                    print(GREEN + NEGRITO + "  \u2713 " + RESET if tarefa[
-                                                                       2] == 1 else RED + NEGRITO + "  \u2718 " + RESET,
+                    print(GREEN + NEGRITO + "  Feita   " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  N Feita " + RESET,
                           NEGRITO, "|",
                           f"ID: {tarefa[0]}",
                           f"| Data: {tarefa[3]}",
                           f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{RESET}")
 
                 else:
-                    prioridade = "🟢"
+                    prioridade = f"{GREEN}baixa{RESET}"
 
-                    print(GREEN + NEGRITO + "  \u2713 " + RESET if tarefa[
-                                                                       2] == 1 else RED + NEGRITO + "  \u2718 " + RESET,
+                    print(GREEN + NEGRITO + "  Feita   " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  N Feita " + RESET,
                           NEGRITO, "|",
                           f"ID: {tarefa[0]}",
                           f"| Data: {tarefa[3]}",
                           f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{RESET}")
 
         for categoria in db_manager.lista_categorias():
-            print("_" * 3, f"{categoria[0]}", "_" * 16)
+            print("_" * 2, f"{categoria[0]}", "_" * (24 - (len(categoria[0]))))
 
             for tarefa in db_manager.tarefas():
                 if tarefa[6] == categoria[0]:
 
                     if tarefa[5] == 2:
-                        prioridade = "🔴"
+                        prioridade = f"{RED}alta{RESET} "
 
-                        print(GREEN + NEGRITO + "  \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  \u2718 " + RESET,
+                        print(GREEN + NEGRITO + "  Feita   " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  N Feita " + RESET,
                               NEGRITO, "|",
                               f"ID: {tarefa[0]}",
                               f"| Data: {tarefa[3]}",
                               f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{RESET}")
 
                     elif tarefa[5] == 1:
-                        prioridade = "🟡"
+                        prioridade = f"{YELLOW}média{RESET}"
 
-                        print(GREEN + NEGRITO + "  \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  \u2718 " + RESET,
+                        print(GREEN + NEGRITO + "  Feita   " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  N Feita " + RESET,
                               NEGRITO, "|",
                               f"ID: {tarefa[0]}",
                               f"| Data: {tarefa[3]}",
                               f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{RESET}")
 
                     else:
-                        prioridade = "🟢"
+                        prioridade = f"{GREEN}baixa{RESET}"
 
-                        print(GREEN + NEGRITO + "  \u2713 " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  \u2718 " + RESET,
+                        print(GREEN + NEGRITO + "  Feita   " + RESET if tarefa[2] == 1 else RED + NEGRITO + "  N Feita " + RESET,
                               NEGRITO, "|",
                               f"ID: {tarefa[0]}",
                               f"| Data: {tarefa[3]}",
@@ -162,7 +139,9 @@ def main():  # Função main
         exibir_tarefas()
 
         if entrada_opcao() == "S":
+            clear_terminal()
             print("  Saindo...")
+            time.sleep(0.4)
             break
 
 
@@ -208,20 +187,28 @@ def validacao_data():
 #  Adicionar uma tarefa à lista de tarefas
 def adicionar_tarefa():
     print(CLARO, '\n "Faça em breves palavras Ex: Tomar café"', RESET)
-    nova_tarefa = input("   Nome Tarefa: ")
+
+    while True:
+        nova_tarefa = input("   Nome Tarefa: ")
+
+        if not nova_tarefa:
+            print(RED, NEGRITO, "\n A tarefa Precisa ter um nome!", RESET)
+        else:
+            break
+
     entrada_obsevacao = input("      Desc da tarefa: ")
 
     while True:
-        print(CLARO, "\n         [0-Baixa 🟢] [1-Média 🟡] [2-Alta 🔴]", RESET)
+        print(CLARO, "\n         [1-Baixa 🟢] [2-Média 🟡] [3-Alta 🔴]", RESET)
         prioridade_tarefa = input("         Qual a prioridade da tarefa?: ").strip()
 
         try:
             prioridade_tarefa = int(prioridade_tarefa)
 
-            if prioridade_tarefa in [0, 1, 2]:
+            if prioridade_tarefa in [1, 2, 3]:
                 break
             else:
-                print(RED, NEGRITO, "\n Digite entre 0 - 2!")
+                print(RED, NEGRITO, "\n Digite entre 1 - 3!")
         except ValueError:
             print(RED, NEGRITO, "\n Entrada inválida ", RESET)
 
@@ -277,10 +264,11 @@ def validacao_indice():
     lista_de_tuplas_indices = db_manager.indices()
     tupla_indice = ()
 
-    for tupla in lista_de_tuplas_indices:  # Parte da função para desempacotar as listas de tuplas
+    # Parte da função para desempacotar as listas de tuplas
+    for tupla in lista_de_tuplas_indices:
         tupla_indice += tupla
 
-    while True:  # Além de verificar se o que o usuario digitou é um inteiro verifica se esse inteiro está entre os índices
+    while True:
         if tupla_indice == ():
             return None
 

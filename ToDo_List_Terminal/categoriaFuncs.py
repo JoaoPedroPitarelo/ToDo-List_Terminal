@@ -11,6 +11,10 @@ def criar_nova_categoria():
         print("\nDigite o nome da categoria")
         entrada_categoria = input("Nome: ").strip()
 
+        if not entrada_categoria:
+            print(RED, NEGRITO, "\nA categoria precisa ter um nome!", RESET)
+            continue
+
         if len(entrada_categoria) > 26:
             print("O nome não pode passar de 26 caracteres")
             continue
@@ -31,6 +35,23 @@ def criar_nova_categoria():
 
 def excluir_categoria():
     print(RED, NEGRITO, "\nEXCLUSÃO DE CATEGORIA", RESET)
+    print(RED, NEGRITO, "\n ATENÇÃO:", RESET,
+          'Ao excluir uma categoria todas as tarefas com ela serão EXCLUÍDAS também!', RESET)
+
+    print("\nDeseja continuar? [S/N]")
+
+    while True:
+        confimacao = input("\nResposta: ").strip().upper()
+
+        if confimacao in ['S', 'N']:
+            if confimacao == 'N':
+                opcao_categoria()
+
+            break
+
+        else:
+            print(RED, NEGRITO, '\nResposta invalida!', RESET)
+
     while True:
 
         if not db_manager.lista_categorias():
@@ -39,13 +60,13 @@ def excluir_categoria():
             break
 
         print("\nDigite o nome da categoria a ser excluida")
-        entrada_categoria = input("Nome: ")
+        entrada_categoria = input("Nome da categoria: ")
 
         flag = False
         for categoria in db_manager.lista_categorias():
             if entrada_categoria == categoria[0]:
                 db_manager.excluir_categoria(entrada_categoria)
-                print(f"{entrada_categoria} excluida!")
+                print(f"{entrada_categoria} excluída!")
                 pause = input("\nPressione ENTER para continuar...")
                 flag = True
                 break

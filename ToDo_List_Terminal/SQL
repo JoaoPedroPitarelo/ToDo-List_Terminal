@@ -1,0 +1,14 @@
+CREATE TABLE tbcategoria (
+    categoria_nome text primary key
+);
+
+create table tbtarefa (
+    id_tarefa INTEGER primary key,
+    tarefa text not null,
+    estado integer not null,
+    data date not null,
+    descricao text not null,
+    prioridade int not null,
+    categoria text,
+    foreign key (categoria) references tbcategoria(categoria_nome)
+);
