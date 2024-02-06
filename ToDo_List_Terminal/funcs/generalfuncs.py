@@ -1,3 +1,6 @@
+import os
+import time
+
 RESET = '\033[0m'
 RED = '\033[31m'
 GREEN = '\033[32m'
@@ -12,7 +15,6 @@ BG_RED = "\033[41m"
 NEGRITO = '\033[1m'
 CLARO = '\033[90m'
 
-
 def logo():
     print(NEGRITO, "                     ", GREEN + "_____                   _             _ \n" +
           WHITE + "     /////|           " + GREEN + "|_   _|__ _ __ _ __ ___ (_)_ __   __ _| |\n" +
@@ -25,3 +27,19 @@ def logo():
           WHITE + "   |===|/         ==).   " + MAGENTA + "        | | (_) | |_| | |_| | |___ | |\__ \| | \n" +
           WHITE + "   '---'         (__)   " + MAGENTA + "         |_|\___/|____/ \___/|_____|___|___/|_| 1.1\n" + RESET
           )
+
+
+def clear_terminal():
+    if os.name == 'nt':  # Windows
+        os.system('cls')
+    elif os.name == 'posix':
+        os.system('clear')  # Sistemas Linux
+
+
+def refresh():
+    palavra = 'refresh'
+    for loop in range(0, 3):
+        palavra = palavra + '.'
+        print(palavra)
+        time.sleep(0.2)
+    time.sleep(1)

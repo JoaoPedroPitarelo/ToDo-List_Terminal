@@ -1,5 +1,5 @@
-from databasemanager import GerenciadorBD
-from colors import *
+from .databasemanager import GerenciadorBD
+from .generalfuncs import *
 
 db_manager = GerenciadorBD()
 

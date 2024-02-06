@@ -8,6 +8,18 @@ class GerenciadorBD:
         self.conn = sqlite3.connect(db_name)
         self.cursor = self.conn.cursor()
 
+    def create_table(self):
+        self.cursor.execute("create table if not exists tbcategoria(categoria_nome text primary key)")
+        self.cursor.execute("create table if not exists tbtarefa(id_tarefa INTEGER primary key,"
+                            " tarefa text not null,"
+                            " estado integer not null,"
+                            " data date not null,"
+                            " descricao text not null,"
+                            " prioridade int not null,"
+                            " categoria text,"
+                            " foreign key (categoria) references tbcategoria(categoria_nome))")
+        self.conn.commit()
+
     #  Fechamento da conexão
     def close_connection(self):
         self.conn.close()
@@ -64,3 +76,4 @@ class GerenciadorBD:
                 self.remover_tarefa(tarefa[0])
 
         self.conn.commit()
+
