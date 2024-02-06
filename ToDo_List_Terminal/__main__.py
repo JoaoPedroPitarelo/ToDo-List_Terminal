@@ -2,7 +2,7 @@
 # Tentar levantar ele como um serviço, para que possa te enviar notificações
 
 from databasemanager import GerenciadorBD
-from categoriaFuncs import opcao_categoria
+from categoriafuncs import opcao_categoria
 from colors import *
 import time
 import os
@@ -159,10 +159,11 @@ def refresh():
 
 #  Validação de data "mudar para o tipo texto posteriormente"
 def validacao_data():
+    print('_' * 26)
     while True:
-        dia_entrada = input("\n  Dia: ")
-        mes_entrada = input("    Mês: ")
-        ano_entrada = input("      Ano: ")
+        dia_entrada = input("\n   Dia: ")
+        mes_entrada = input("     Mês: ")
+        ano_entrada = input("       Ano: ")
 
         try:
             dia_entrada = int(dia_entrada)
@@ -184,10 +185,25 @@ def validacao_data():
     return dia_entrada, mes_entrada, ano_entrada
 
 
-#  Adicionar uma tarefa à lista de tarefas
-def adicionar_tarefa():
-    print(CLARO, '\n "Faça em breves palavras Ex: Tomar café"', RESET)
+def formatacao_data(dia, mes, ano):
 
+    if dia in range(0, 9) and mes in range(0, 9):
+        data_formatada = f"0{dia}/0{mes}/{ano}"
+    elif dia in range(0, 9):
+        data_formatada = f"0{dia}/{mes}/{ano}"
+    elif mes in range(0, 9):
+        data_formatada = f"{dia}/0{mes}/{ano}"
+    else:
+        data_formatada = f"{dia}/{mes}/{ano}"
+
+    return data_formatada
+
+
+def adicionar_tarefa():
+    print('_' * 26)
+    print(GREEN, NEGRITO, "\n  Adicionar Tarefa", RESET)
+
+    print(CLARO, '\n "Faça em breves palavras Ex: Tomar café"', RESET)
     while True:
         nova_tarefa = input("   Nome Tarefa: ")
 
@@ -198,9 +214,10 @@ def adicionar_tarefa():
 
     entrada_obsevacao = input("      Desc da tarefa: ")
 
+    print('_' * 26)
     while True:
-        print(CLARO, "\n         [1-Baixa 🟢] [2-Média 🟡] [3-Alta 🔴]", RESET)
-        prioridade_tarefa = input("         Qual a prioridade da tarefa?: ").strip()
+        print(CLARO, "\n  [1-Baixa 🟢] [2-Média 🟡] [3-Alta 🔴]", RESET)
+        prioridade_tarefa = input("   Qual a prioridade da tarefa?: ").strip()
 
         try:
             prioridade_tarefa = int(prioridade_tarefa)
@@ -212,6 +229,7 @@ def adicionar_tarefa():
         except ValueError:
             print(RED, NEGRITO, "\n Entrada inválida ", RESET)
 
+    print('_' * 26)
     while True:
 
         lista_formatada = ''
@@ -219,15 +237,15 @@ def adicionar_tarefa():
             lista_formatada += "" + i[0] + "  "
 
         print(
-            '\n\nCategorias: ',
+            '\n    Categorias: ',
             GREEN, NEGRITO, '[ ',
             WHITE, lista_formatada,
             GREEN, ']', RESET
         )
 
-        print(CLARO, "\n<Enter> = Geral", RESET)
-        print(" Qual a categoria?")
-        entrada_categoria = input("\n Escolha: ")
+        print(CLARO, "\n  <Enter> = Geral", RESET)
+        print("   Qual a categoria?")
+        entrada_categoria = input("\n   Escolha: ")
 
         try:
             if entrada_categoria == '':
@@ -244,19 +262,9 @@ def adicionar_tarefa():
         except ValueError:
             print(RED, NEGRITO, "\n Categoria não achada!")
 
-    data_validada = validacao_data()
+    data_validada = formatacao_data(*validacao_data())
 
-    # criar um função para esse horror
-    if data_validada[0] in range(0, 9) and data_validada[1] in range(0, 9):
-        data_formatada = f"0{data_validada[0]}/0{data_validada[1]}/{data_validada[2]}"
-    elif data_validada[0] in range(0, 9):
-        data_formatada = f"0{data_validada[0]}/{data_validada[1]}/{data_validada[2]}"
-    elif data_validada[1] in range(0, 9):
-        data_formatada = f"{data_validada[0]}/0{data_validada[1]}/{data_validada[2]}"
-    else:
-        data_formatada = f"{data_validada[0]}/{data_validada[1]}/{data_validada[2]}"
-
-    db_manager.adicionar_tarefa(nova_tarefa, data_formatada, entrada_obsevacao, prioridade_tarefa, entrada_categoria)
+    db_manager.adicionar_tarefa(nova_tarefa, data_validada, entrada_obsevacao, prioridade_tarefa, entrada_categoria)
 
 
 #  Validação dos índices
@@ -272,7 +280,7 @@ def validacao_indice():
         if tupla_indice == ():
             return None
 
-        entrada_indice = input("\n   Índice: ").strip()
+        entrada_indice = input("\n   Índice da tarefa: ").strip()
 
         try:
             entrada_indice = int(entrada_indice)
@@ -288,19 +296,27 @@ def validacao_indice():
 
 
 def remover_tarefa():  # Remover tarefa
+    print('_' * 26)
+    print(RED, NEGRITO, '\n  Remover Tarefa', RESET)
     db_manager.remover_tarefa(validacao_indice())
 
 
 def alt_feita():  # Mudar para feita a tarefa
+    print('_' * 26)
+    print(GREEN, NEGRITO, '\n Marcar como Feita', RESET)
     db_manager.alt_feita(validacao_indice())
 
 
 def alt_nao_feita():  # Mudar para não feita a tarefa
+    print('_' * 26)
+    print(RED, NEGRITO, '\n  Marcar como Não Feita', RESET)
     db_manager.alt_nao_feita(validacao_indice())
 
 
 # Descrições das tarefas
 def acessar_descricoes():
+    print('_' * 26)
+    print(GREEN, NEGRITO, '\n  Acessar Descrições', RESET)
     indice_validacao = validacao_indice()
 
     if not db_manager.descricoes(indice_validacao):

@@ -1,5 +1,4 @@
 .vscode
 .idea
 venv
-.gitignore
-/ToDo_List_Terminal/SQL
+/ToDo_List_Terminal/SQL.txt
