@@ -30,9 +30,9 @@ def validacao_data():
 
 def formatacao_data(dia, mes, ano):
 
-    if dia in range(0, 9) and mes in range(0, 9):
+    if dia in range(0, 10) and mes in range(0, 10):
         data_formatada = f"0{dia}/0{mes}/{ano}"
-    elif dia in range(0, 9):
+    elif dia in range(0, 10):
         data_formatada = f"0{dia}/{mes}/{ano}"
     elif mes in range(0, 9):
         data_formatada = f"{dia}/0{mes}/{ano}"
