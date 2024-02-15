@@ -1,12 +1,12 @@
 #  📘 ToDo-List em Python
 
-<h3> Lista de tarefas feita na linguagem Python para terminais</h3>
+<h3> Lista de tarefas para terminais feita na linguagem Python</h3>
 
 <h3> Passos para executar: </h3>
-<ul>1. Tenha o interpretador Python instalado em sua máquina. Caso não tenha entre em Python.org Tome cuidado para marcar a caixa "Adicionar ao .path" </ul>
+<ul>1. Tenha o interpretador Python instalado em sua máquina. Caso não tenha entre em Python.org. Certifique-se de marcar a caixa "Adicionar ao .path" na hora da instalação</ul>
 <ul>2. Faça um Git clone na pasta de sua prefêrencia</ul>
-<ul>3. Pelo terminal entre na pasta em que foi clonada os arquivos Ex: cd Documents/ </ul>
-<ul>4. Digite o comando 'python main.py' (no Windows) | 'python3 main.py' (no Linux) </ul>
+<ul>3. Pelo terminal de sua preferência entre na pasta em que foi clonada os arquivos Ex: cd Documents/ToDo_list </ul>
+<ul>4. Digite o comando 'python __main__.py' (no Windows) | 'python3 __main__.py' (no Linux) </ul>
 
                         _____                   _             _
        /////|          |_   _|__ _ __ _ __ ___ (_)_ __   __ _| |
