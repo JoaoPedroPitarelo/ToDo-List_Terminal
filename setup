@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Function to set up an alias for the tasks
+main()
+{
+    # Get the current script's directory and store it in the variable DIR
+    DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+    # Add an alias to the ~/.bashrc file for tasks
+    # The alias changes the directory to the script's directory, runs a Python script, and then changes back to the home directory
+    echo "alias tarefas='cd $DIR && python3 $DIR/ToDo_List_Terminal/__main__.py && cd ~/'" >> ~/.bashrc
+}
+
+# Call the main function
+main
