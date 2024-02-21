@@ -8,8 +8,4 @@ class Tarefas:
     
     
     def imprimir(self):
-        print(f"{self.estado} id:{self.indice} data:{self.data} prioridade:{self.prioridade} nome:{self.nome}")
-
-
-
-        
+        print(f"{self.estado} id:{self.indice} data:{self.data} prioridade:{self.prioridade} nome:{self.nome}")      

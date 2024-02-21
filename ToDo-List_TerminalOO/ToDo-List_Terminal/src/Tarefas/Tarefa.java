@@ -9,12 +9,38 @@ public class Tarefa {
 	private int prioridade;
 	private String nome;
 	
-	// Construtor
-	public Tarefa(char estado, int indice, String data, int prioridade, String nome) {
+	public char getEstado() {
+		return estado;
+	}
+	public void setEstado() {
 		this.estado = estado;
+	}
+	
+	public int getIndice() {
+		return indice;
+	}
+	public void setIndice() {
 		this.indice = indice;
+	}
+	
+	public String getData() {
+		return data;
+	}
+	public void setData() {
 		this.data = data;
+	}
+	
+	public int getPrioridade() {
+		return prioridade;
+	}
+	public void setPrioridade() {
 		this.prioridade = prioridade;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome() {
 		this.nome = nome;
 	}
 }
