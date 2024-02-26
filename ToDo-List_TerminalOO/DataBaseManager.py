@@ -38,9 +38,9 @@ class DataBaseManager:
         return self.cursor.fetchall()
     
 
-    def add_task(self, task_name, state, date, description, priority):
-        self.cursor.execute("INSERT INTO tbtask (task_name, state, date, priority, description, category_name) VALUES (?, 0, ?, ?, ?, ?)",
-                            (task_name, state, date, description, priority))
+    def add_task(self, task_name, date, description, priority, category):
+        self.cursor.execute("INSERT INTO tbtask (task_name, date, state, priority, task_description, category) VALUES (?, ?, 0, ?, ?, ?)",
+                            (task_name, date, description, priority, category))
         self.conn.commit()
     
     def remove_task(self, id_task):
@@ -62,4 +62,4 @@ class DataBaseManager:
 
     def modify_status_to_not_done(self, id_task) :
         self.cursor.execute("UPDATE tbtask SET state = ? WHERE id_task = ?", (0, id_task))
-
+    
