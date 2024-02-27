@@ -123,7 +123,7 @@ def entrada_opcao():
 
 
 #   Função Principal(main)
-def main():  # Função main
+def main():  
 
     while True:
         funcs.clear_terminal()

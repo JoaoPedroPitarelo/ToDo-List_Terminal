@@ -1,4 +1,5 @@
-from DataBaseManager import *
+from DataBaseManager import DataBaseManager
+from validations import *
 
 dbmanager = DataBaseManager("database.db")
 dbmanager.create_tables()
@@ -35,4 +36,26 @@ class Task:
         
 
     def set_task(name, description, date, priority, category):        
-        dbmanager.add_task(name, description, category, date, priority)
+        
+        if validate_date(date):  
+            dbmanager.add_task(name, description, category, date, priority)
+        else:
+            raise ValueError("The information did not pass validation") 
+        
+    # def remove_task(): 
+    #   print('_' * 26)
+    #   print(funcs.RED, funcs.NEGRITO, '\n  Remover Tarefa', funcs.RESET)
+    #   db_manager.remover_tarefa(validacao_indice())
+    
+    
+    # def alt_feita():  # Mudar para feita a tarefa
+    #     print('_' * 26)
+    #     print(funcs.GREEN, funcs.NEGRITO, '\n Marcar como Feita', funcs.RESET)
+    #     db_manager.alt_feita(validacao_indice())
+    
+    # def alt_nao_feita():  # Mudar para não feita a tarefa
+    #     print('_' * 26)
+    #     print(funcs.RED, funcs.NEGRITO, '\n  Marcar como Não funcs.Feita', funcs.RESET)
+    #     db_manager.alt_nao_feita(validacao_indice())
+
+

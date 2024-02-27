@@ -39,7 +39,7 @@ class DataBaseManager:
     
 
     def add_task(self, task_name, date, description, priority, category):
-        self.cursor.execute("INSERT INTO tbtask (task_name, date, state, priority, task_description, category) VALUES (?, ?, 0, ?, ?, ?)",
+        self.cursor.execute("INSERT INTO tbtask (task_name,date, state, task_description, priority, category) VALUES (?, ?, 0, ?, ?, ?)",
                             (task_name, date, description, priority, category))
         self.conn.commit()
     
