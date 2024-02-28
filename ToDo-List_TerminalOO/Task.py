@@ -4,7 +4,6 @@ from validations import *
 dbmanager = DataBaseManager("database.db")
 dbmanager.create_tables()
 
-
 class Task:
     def __init__(self, state, index, date, priority, name, description, category):
         self.__index = index
@@ -14,7 +13,8 @@ class Task:
         self.__priority = priority
         self.__description = description
         self.__category = category        
-       
+    
+    
     # Getters 
     def get_index(self):
         return self.__index
@@ -35,10 +35,10 @@ class Task:
         return self.__description
         
 
-    def set_task(name, description, date, priority, category):        
+    def set_task(task_name, description, category, date, priority):        
         
-        if validate_date(date):  
-            dbmanager.add_task(name, description, category, date, priority)
+        if validate_date(date) and validate_priority(priority):  
+            dbmanager.add_task(task_name, description, category, date, priority)
         else:
             raise ValueError("The information did not pass validation") 
         
