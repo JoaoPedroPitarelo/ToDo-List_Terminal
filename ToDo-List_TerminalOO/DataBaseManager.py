@@ -9,11 +9,11 @@ class DataBaseManager:
         self.cursor.execute("create table if not exists tbcategory(category_name text primary key)")
         self.cursor.execute("create table if not exists tbtask(id_task INTEGER primary key,"
                             " task_name text not null,"
-                            " state integer not null,"
-                            " date date not null,"
                             " task_description text not null,"
-                            " priority int not null,"
                             " category text,"
+                            " date date not null,"
+                            " priority int not null,"
+                            " state integer not null,"
                             " foreign key (category) references tbcategory(category_name))")
         self.conn.commit()
 
@@ -44,7 +44,7 @@ class DataBaseManager:
         self.conn.commit()
     
     def remove_task(self, id_task):
-        self.cursor.execute("DELETE FROM tbtask WHERE id_task = ?", (id_task))
+        self.cursor.execute("DELETE FROM tbtask WHERE id_task = ?", (id_task,))
         self.conn.commit()
 
     def add_category(self, category_name):
@@ -56,10 +56,11 @@ class DataBaseManager:
         self.conn.commit()
     
 
-    def modify_status_to_done(self, id_task):
+    def modify_state_to_done(self, id_task):
         self.cursor.execute("UPDATE tbtask SET state = ? WHERE id_task = ?", (1, id_task))
         self.conn.commit()
 
-    def modify_status_to_not_done(self, id_task) :
+    def modify_state_to_not_done(self, id_task):
         self.cursor.execute("UPDATE tbtask SET state = ? WHERE id_task = ?", (0, id_task))
+        self.conn.commit()
     

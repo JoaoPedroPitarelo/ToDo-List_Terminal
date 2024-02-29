@@ -1,8 +1,6 @@
 from DataBaseManager import DataBaseManager
 from validations import *
 
-dbmanager = DataBaseManager("database.db")
-dbmanager.create_tables()
 
 class Task:
     def __init__(self, state, index, date, priority, name, description, category):
@@ -13,40 +11,46 @@ class Task:
         self.__priority = priority
         self.__description = description
         self.__category = category        
-    
-    
-    # Getters 
-    def get_index(self):
-        return self.__index
-    
-    def get_name(self):
-        return self.__name
-    
-    def get_state(self):
-        return self.__state
-    
-    def get_date(self):
-        return self.__date 
-    
-    def get_priority(self):
-        return self.__priority
-    
-    def get_description(self):
-        return self.__description
-        
+  
+    dbmanager = DataBaseManager("database.db")
+    dbmanager.create_tables()
 
     def set_task(task_name, description, category, date, priority):        
-        
-        if validate_date(date) and validate_priority(priority):  
+       
+        if validate_date(date) and validate_priority(priority) and validate_category(category):  
             dbmanager.add_task(task_name, description, category, date, priority)
+            return f"{task_name}: Task added succefuly"
         else:
-            raise ValueError("The information did not pass validation") 
+            return ValueError("The information did not pass validation")  # Não sei se seria correto, poém com raise ele para a execução 
         
-    # def remove_task(): 
-    #   print('_' * 26)
-    #   print(funcs.RED, funcs.NEGRITO, '\n  Remover Tarefa', funcs.RESET)
-    #   db_manager.remover_tarefa(validacao_indice())
-    
+        
+    def remove_task(id_task): 
+        
+        if validate_index(id_task):
+            dbmanager.remove_task(id_task)
+            return f"{id_task}: Task removed succefuly"      
+        else:    
+            return IndexError("The informed index is not correct")  # Não sei se seria correto, poém com raise ele para a execução 
+                
+
+    def set_state_to_done(id_task):
+        
+        if (validate_index):
+            dbmanager.modify_state_to_done(id_task)
+            return f"{id_task}: has been modified to done succefuly"
+        else:
+            return IndexError("The informed index is not correct")  # Não sei se seria correto, poém com raise ele para a execução 
+            
+            
+    def set_state_to_not_done(id_task):
+        
+        if (validate_index):
+            dbmanager.modify_state_to_not_done(id_task)
+            return f"{id}: has been modified to not done succefuly"
+        else:
+            return IndexError("The informed index is not correct")  # Não sei se seria correto, poém com raise ele para a execução 
+                 
+                      
     
     # def alt_feita():  # Mudar para feita a tarefa
     #     print('_' * 26)

@@ -11,8 +11,8 @@ def validate_index(index):
         list_indexes += tuple
     
     if index in list_indexes:
-        return index
-    return 0
+        return True 
+    return False 
     
 
 def validate_priority(input_value):
