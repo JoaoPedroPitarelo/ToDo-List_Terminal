@@ -52,7 +52,7 @@ class DataBaseManager:
         self.conn.commit()
         
     def remove_category(self, category_name):
-        self.cursor.execute("DELETE FROM tbtask WHERE category_name = ?", (category_name,))
+        self.cursor.execute("DELETE FROM tbcategory WHERE category_name = ?", (category_name,))
         self.conn.commit()
     
 
@@ -62,5 +62,10 @@ class DataBaseManager:
 
     def modify_state_to_not_done(self, id_task):
         self.cursor.execute("UPDATE tbtask SET state = ? WHERE id_task = ?", (0, id_task))
+        self.conn.commit()
+        
+    def modify_name_category(self, category_name):
+        self.cursor.execute("UPDATE TBTASK SET category_name = ?", (category_name,))
+        
         self.conn.commit()
     

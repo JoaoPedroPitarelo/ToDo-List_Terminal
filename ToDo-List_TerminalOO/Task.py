@@ -19,36 +19,36 @@ class Task:
        
         if validate_date(date) and validate_priority(priority) and validate_category(category):  
             dbmanager.add_task(task_name, description, category, date, priority)
-            return f"{task_name}: Task added succefuly"
+            return True
         else:
-            return ValueError("The information did not pass validation")  # Não sei se seria correto, poém com raise ele para a execução 
+            return False  # Não sei se seria correto, porém com raise ele para a execução 
         
         
     def remove_task(id_task): 
         
         if validate_index(id_task):
             dbmanager.remove_task(id_task)
-            return f"{id_task}: Task removed succefuly"      
+            return True
         else:    
-            return IndexError("The informed index is not correct")  # Não sei se seria correto, poém com raise ele para a execução 
+            return False  # Não sei se seria correto, porém com raise ele para a execução 
                 
 
     def set_state_to_done(id_task):
         
         if (validate_index):
             dbmanager.modify_state_to_done(id_task)
-            return f"{id_task}: has been modified to done succefuly"
+            return True
         else:
-            return IndexError("The informed index is not correct")  # Não sei se seria correto, poém com raise ele para a execução 
+            return False  # Não sei se seria correto, porém com raise ele para a execução 
             
             
     def set_state_to_not_done(id_task):
         
         if (validate_index):
             dbmanager.modify_state_to_not_done(id_task)
-            return f"{id}: has been modified to not done succefuly"
+            return True
         else:
-            return IndexError("The informed index is not correct")  # Não sei se seria correto, poém com raise ele para a execução 
+            return False  # Não sei se seria correto, poém com raise ele para a execução 
                  
                       
     
