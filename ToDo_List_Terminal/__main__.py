@@ -156,6 +156,9 @@ def adicionar_tarefa():
     print(funcs.CLARO, '\n "Faça em breves palavras Ex: Tomar café"', funcs.RESET)
     while True:
         nova_tarefa = input("   Nome Tarefa: ")
+        
+        if nova_tarefa.lower() == "-s":
+            return 0
 
         if not nova_tarefa:
             print(funcs.RED, funcs.NEGRITO, "\n A tarefa Precisa ter um nome!", funcs.RESET)
@@ -163,11 +166,17 @@ def adicionar_tarefa():
             break
 
     entrada_obsevacao = input("      Desc da tarefa: ")
+    
+    if entrada_obsevacao.lower() == "-s":
+        return 0
 
     print('_' * 26)
     while True:
         print(f"\n  [{funcs.GREEN}1-Baixa{funcs.RESET}] [{funcs.YELLOW}2-Média{funcs.RESET}] [{funcs.RED}3-Alta{funcs.RESET}]")
         prioridade_tarefa = input("   Qual a prioridade da tarefa?: ").strip()
+        
+        if prioridade_tarefa.lower() == "-s":
+            return 0
 
         try:
             prioridade_tarefa = int(prioridade_tarefa)
@@ -197,6 +206,9 @@ def adicionar_tarefa():
         print("   Qual a categoria?")
         entrada_categoria = input("\n   Escolha: ")
 
+        if entrada_categoria.lower() == "-s":
+            return 0
+        
         try:
             if entrada_categoria == '':
                 entrada_categoria = 'Geral'

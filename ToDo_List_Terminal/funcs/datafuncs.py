@@ -5,8 +5,16 @@ def validacao_data():
     print('_' * 26)
     while True:
         dia_entrada = input("\n   Dia: ")
+        if dia_entrada.lower() == "-s":
+            return 0
+        
         mes_entrada = input("     Mês: ")
+        if mes_entrada.lower() == "-s":
+            return 0
+        
         ano_entrada = input("       Ano: ")
+        if ano_entrada.lower() == "-s":
+            return 0
 
         try:
             dia_entrada = int(dia_entrada)
