@@ -64,8 +64,11 @@ class DataBaseManager:
         self.cursor.execute("UPDATE tbtask SET state = ? WHERE id_task = ?", (0, id_task))
         self.conn.commit()
         
-    def modify_name_category(self, category_name):
-        self.cursor.execute("UPDATE TBTASK SET category_name = ?", (category_name,))
+    def modify_name_category_from_tbcategory(self, old_category_name, new_category_name):
+        self.cursor.execute("UPDATE tbcategory SET category_name = ? WHERE category_name = ?", (new_category_name, old_category_name,))
+        self.conn.commit()
         
+    def modify_name_category_from_tbtask(self, old_category_name, new_category_name):
+        self.cursor.execute("UPDATE tbtask SET category = ? WHERE category = ?", (new_category_name, old_category_name))
         self.conn.commit()
     
