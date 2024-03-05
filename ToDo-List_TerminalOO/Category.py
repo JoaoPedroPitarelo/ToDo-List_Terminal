@@ -39,7 +39,3 @@ class Category:
                 return True
             else:
                 return False
-
-    
-        
-    
