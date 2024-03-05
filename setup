@@ -8,7 +8,7 @@ main()
 
     # Add an alias to the ~/.bashrc file for tasks
     # The alias changes the directory to the script's directory, runs a Python script, and then changes back to the home directory
-    echo "alias tarefas='cd $DIR && python3 $DIR/ToDo_List_Terminal/__main__.py && cd ~/'" >> ~/.bashrc
+    echo "alias tarefas='cd $DIR && python3 $DIR/ToDo_List_Terminal/main.py && cd ~/'" >> ~/.bashrc
 }
 
 # Call the main function
