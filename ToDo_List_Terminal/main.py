@@ -54,7 +54,7 @@ def exibir_tarefas():
             for tarefa in db_manager.tarefas():
                 if tarefa[6] == categoria[0]:
 
-                    if tarefa[5] == 2:
+                    if tarefa[5] == 3:
                         prioridade = f"{funcs.RED}alta{funcs.RESET} "
 
                         print(funcs.GREEN + funcs.NEGRITO + "  Feita   " + funcs.RESET if tarefa[2] == 1 else funcs.RED + funcs.NEGRITO + "  N Feita " + funcs.RESET,
@@ -63,7 +63,7 @@ def exibir_tarefas():
                               f"| Data: {tarefa[3]}",
                               f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{funcs.RESET}")
 
-                    elif tarefa[5] == 1:
+                    elif tarefa[5] == 2:
                         prioridade = f"{funcs.YELLOW}média{funcs.RESET}"
 
                         print(funcs.GREEN + funcs.NEGRITO + "  Feita   " + funcs.RESET if tarefa[2] == 1 else funcs.RED + funcs.NEGRITO + "  N Feita " + funcs.RESET,
