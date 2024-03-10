@@ -1,0 +1,1 @@
+Mostrar todas as tarefas, e motrar as tarefas para hoje. Em áreas separadas
