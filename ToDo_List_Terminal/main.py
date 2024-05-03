@@ -26,27 +26,27 @@ def exibir_tarefas():
 
                     print(funcs.GREEN + funcs.NEGRITO + "  Feita   " + funcs.RESET if tarefa[2] == 1 else funcs.RED + funcs.NEGRITO + "  N Feita " + funcs.RESET,
                           funcs.NEGRITO, "|",
-                          f"ID: {tarefa[0]}",
+                          f"ID: {tarefa[0]}  " if tarefa[0] < 10 else f"ID: {tarefa[0]} ",
                           f"| Data: {tarefa[3]}",
-                          f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{funcs.RESET}")
+                          f"| Prioridade: {prioridade} ", funcs.NEGRITO ,f"| Tarefa:  {tarefa[1]}{funcs.RESET}")
 
                 elif tarefa[5] == 2:
                     prioridade = f"{funcs.YELLOW}média{funcs.RESET}"
 
                     print(funcs.GREEN + funcs.NEGRITO + "  Feita   " + funcs.RESET if tarefa[2] == 1 else funcs.RED + funcs.NEGRITO + "  N Feita " + funcs.RESET,
                           funcs.NEGRITO, "|",
-                          f"ID: {tarefa[0]}",
+                          f"ID: {tarefa[0]}  " if tarefa[0] < 10 else f"ID: {tarefa[0]} ",
                           f"| Data: {tarefa[3]}",
-                          f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{funcs.RESET}")
+                          f"| Prioridade: {prioridade} ", funcs.NEGRITO ,f"| Tarefa:  {tarefa[1]}{funcs.RESET}")
 
                 else:
                     prioridade = f"{funcs.GREEN}baixa{funcs.RESET}"
 
                     print(funcs.GREEN + funcs.NEGRITO + "  Feita   " + funcs.RESET if tarefa[2] == 1 else funcs.RED + funcs.NEGRITO + "  N Feita " + funcs.RESET,
                           funcs.NEGRITO, "|",
-                          f"ID: {tarefa[0]}",
+                          f"ID: {tarefa[0]}  " if tarefa[0] < 10 else f"ID: {tarefa[0]} ",
                           f"| Data: {tarefa[3]}",
-                          f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{funcs.RESET}")
+                          f"| Prioridade: {prioridade} ", funcs.NEGRITO ,f"| Tarefa:  {tarefa[1]}{funcs.RESET}")
 
         for categoria in db_manager.lista_categorias():
             print("_" * 2, f"{categoria[0]}", "_" * (24 - (len(categoria[0]))))
@@ -59,27 +59,27 @@ def exibir_tarefas():
 
                         print(funcs.GREEN + funcs.NEGRITO + "  Feita   " + funcs.RESET if tarefa[2] == 1 else funcs.RED + funcs.NEGRITO + "  N Feita " + funcs.RESET,
                               funcs.NEGRITO, "|",
-                              f"ID: {tarefa[0]}",
+                              f"ID: {tarefa[0]}  " if tarefa[0] < 10 else f"ID: {tarefa[0]} ",
                               f"| Data: {tarefa[3]}",
-                              f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{funcs.RESET}")
+                              f"| Prioridade: {prioridade} ", funcs.NEGRITO ,f"| Tarefa:  {tarefa[1]}{funcs.RESET}")
 
                     elif tarefa[5] == 2:
                         prioridade = f"{funcs.YELLOW}média{funcs.RESET}"
 
                         print(funcs.GREEN + funcs.NEGRITO + "  Feita   " + funcs.RESET if tarefa[2] == 1 else funcs.RED + funcs.NEGRITO + "  N Feita " + funcs.RESET,
                               funcs.NEGRITO, "|",
-                              f"ID: {tarefa[0]}",
+                              f"ID: {tarefa[0]}  " if tarefa[0] < 10 else f"ID: {tarefa[0]} ",
                               f"| Data: {tarefa[3]}",
-                              f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{funcs.RESET}")
+                              f"| Prioridade: {prioridade} ", funcs.NEGRITO ,f"| Tarefa:  {tarefa[1]}{funcs.RESET}")
 
                     else:
                         prioridade = f"{funcs.GREEN}baixa{funcs.RESET}"
 
                         print(funcs.GREEN + funcs.NEGRITO + "  Feita   " + funcs.RESET if tarefa[2] == 1 else funcs.RED + funcs.NEGRITO + "  N Feita " + funcs.RESET,
                               funcs.NEGRITO, "|",
-                              f"ID: {tarefa[0]}",
+                              f"ID: {tarefa[0]}  " if tarefa[0] < 10 else f"ID: {tarefa[0]} ",
                               f"| Data: {tarefa[3]}",
-                              f"| Prioridade: {prioridade} | Tarefa:  {tarefa[1]}{funcs.RESET}")
+                              f"| Prioridade: {prioridade} ", funcs.NEGRITO ,f"| Tarefa:  {tarefa[1]}{funcs.RESET}")
 
 
 #  Função para a entrada do usuário nas opções
