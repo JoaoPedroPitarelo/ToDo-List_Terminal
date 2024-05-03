@@ -127,7 +127,7 @@ def main():  # Função main
 
     while True:
         funcs.clear_terminal()
-        funcs.logo()
+        funcs.logo_animada()
         exibir_tarefas()
 
         if entrada_opcao() == "S":
