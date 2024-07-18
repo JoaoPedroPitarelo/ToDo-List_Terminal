@@ -5,10 +5,23 @@ main()
 {
     # Get the current script's directory and store it in the variable DIR
     DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-    # Add an alias to the ~/.bashrc file for tasks
+    
+    # Add an alias to the appropriate shell configuration file for tasks
     # The alias changes the directory to the script's directory, runs a Python script, and then changes back to the home directory
-    echo "alias tarefas='cd $DIR && python3 $DIR/ToDo_List_Terminal/main.py && cd ~/'" >> ~/.bashrc
+
+    # BASH
+    if [ "$SHELL" = "/bin/bash" ]; then
+        echo "alias tarefas='cd $DIR && python3 $DIR/ToDo_List_Terminal/main.py && cd ~/'" >> ~/.bashrc
+    fi
+
+    # ZSH
+    if [ "$SHELL" = "/bin/zsh" ]; then 
+        echo "alias tarefas='cd $DIR && python3 $DIR/ToDo_List_Terminal/main.py && cd ~/'" >> ~/.zshrc
+    fi
+
+    if [ "$SHELL" = "/usr/bin/zsh" ]; then 
+        echo "alias tarefas='cd $DIR && python3 $DIR/ToDo_List_Terminal/main.py && cd ~/'" >> ~/.zshrc
+    fi
 }
 
 # Call the main function
