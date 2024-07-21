@@ -14,6 +14,10 @@ main()
         echo "alias tarefas='cd $DIR && python3 $DIR/ToDo_List_Terminal/main.py && cd ~/'" >> ~/.bashrc
     fi
 
+    if [ "$SHELL" = "/usr/bin/bash" ]; then
+        echo "alias tarefas='cd $DIR && python3 $DIR/ToDo_List_Terminal/main.py && cd ~/'" >> ~/.bashrc
+    fi
+
     # ZSH
     if [ "$SHELL" = "/bin/zsh" ]; then 
         echo "alias tarefas='cd $DIR && python3 $DIR/ToDo_List_Terminal/main.py && cd ~/'" >> ~/.zshrc
